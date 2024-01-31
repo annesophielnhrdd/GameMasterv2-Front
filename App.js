@@ -4,8 +4,6 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { COLORS, GLOBAL_STYLES } from "./constants";
-
 import {
   useFonts,
   LeagueSpartan_900Black,
@@ -15,6 +13,7 @@ import {
 
 // AJOUTER LES IMPORTS DES AUTRES SCREENS
 import { Login, SignIn, SignUp } from "./screens/login";
+import { GLOBAL_STYLES, COLORS } from "./constants";
 
 // AJOUTER LES IMPORTS DES REDUCEURS
 // import { Provider } from "react-redux";

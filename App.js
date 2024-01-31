@@ -16,12 +16,12 @@ import { Login, SignIn, SignUp } from "./screens/login";
 import { GLOBAL_STYLES, COLORS } from "./constants";
 
 // AJOUTER LES IMPORTS DES REDUCEURS
-// import { Provider } from "react-redux";
-// import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
 
-// const store = configureStore({
-//   reducer: { user, game },
-// });
+const store = configureStore({
+  reducer: { user },
+});
 
 const Stack = createNativeStackNavigator();
 
@@ -36,15 +36,17 @@ export default function App() {
     return null;
   }
 
-  // AJOUTER LES AUTRES STACK.SCREENS DANS LE RETURN <Provider store={store}>
+  // AJOUTER LES AUTRES STACK.SCREENS DANS LE RETURN
   return (
-    <NavigationContainer>
-      <StatusBar hidden={false} />
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="SignUp" component={SignUp} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <StatusBar hidden={false} />
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Login" component={Login} />
+          <Stack.Screen name="SignIn" component={SignIn} />
+          <Stack.Screen name="SignUp" component={SignUp} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }

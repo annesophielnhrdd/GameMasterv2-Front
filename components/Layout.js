@@ -1,38 +1,28 @@
-import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, View, Text, Image, ActivityIndicator } from "react-native";
+import { GLOBAL_STYLES, COLORS } from "../constants";
 
-const Layout = () => {
+const Layout = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(false);
+
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
+    <View style={GLOBAL_STYLES.screenContainer}>
+      <View style={GLOBAL_STYLES.header}>
         <Image
           source={require("../assets/logogm.png")}
-          style={styles.logo}
+          style={GLOBAL_STYLES.logo}
           resizeMode="contain"
         />
       </View>
+      {isLoading ? (
+        <View style={GLOBAL_STYLES.spinner}>
+          <ActivityIndicator size="large" color="#efefef" />
+        </View>
+      ) : (
+        <View style={GLOBAL_STYLES.body}>{children}</View>
+      )}
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  headerContainer: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#efefef",
-    width: "100%",
-    Height: "18%",
-  },
-  logo: {
-    marginTop: "10%",
-    maxWidth: "70%",
-    maxHeight: "40%",
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#5D726F",
-  },
-});
 
 export default Layout;

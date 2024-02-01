@@ -11,13 +11,14 @@ import {
   LeagueSpartan_700Bold,
 } from "@expo-google-fonts/league-spartan";
 
-// AJOUTER LES IMPORTS DES AUTRES SCREENS
+// TODO : AJOUTER LES IMPORTS DES AUTRES SCREENS
 import { Login, SignIn, SignUp } from "./screens/login";
 import { GLOBAL_STYLES, COLORS } from "./constants";
 
-// AJOUTER LES IMPORTS DES REDUCEURS
+// TODO : AJOUTER LES IMPORTS DES REDUCEURS
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
+import { user } from "./reducers/user";
 
 const store = configureStore({
   reducer: { user },
@@ -36,7 +37,7 @@ export default function App() {
     return null;
   }
 
-  // AJOUTER LES AUTRES STACK.SCREENS DANS LE RETURN
+  // TODO : AJOUTER LES AUTRES STACK.SCREENS DANS LE RETURN
   return (
     <Provider store={store}>
       <NavigationContainer>

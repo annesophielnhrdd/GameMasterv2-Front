@@ -7,7 +7,7 @@ import Layout from "../../components/Layout";
 
 export function Login({ navigation }) {
   return (
-    <View style={GLOBAL_STYLES.container}>
+    <View style={GLOBAL_STYLES.screenContainer}>
       <Layout />
       <View style={GLOBAL_STYLES.introContainer}>
         <Text style={GLOBAL_STYLES.intro}>
@@ -18,7 +18,7 @@ export function Login({ navigation }) {
       <View style={GLOBAL_STYLES.titreContainer}>
         <Text style={GLOBAL_STYLES.titre}>Entrez dans l'histoire</Text>
       </View>
-      <View style={GLOBAL_STYLES.buttonContainer}>
+      {/* <View style={GLOBAL_STYLES.buttonContainer}>
         <TouchableOpacity
           style={GLOBAL_STYLES.button}
           onPress={() => navigation.navigate("SignIn")}
@@ -31,7 +31,7 @@ export function Login({ navigation }) {
         >
           <Text style={GLOBAL_STYLES.buttonText}>Créer un compte</Text>
         </TouchableOpacity>
-      </View>
+      </View> */}
     </View>
   );
 }

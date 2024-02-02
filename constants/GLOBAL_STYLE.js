@@ -50,11 +50,11 @@ export const GLOBAL_STYLES = StyleSheet.create({
     // marginTop: '20%',
     gap: 32,
     paddingVertical: 32,
-    backgroundColor: "transparent",
+    minHeight: "100%",
   },
   scrollView: {
     width: "100%",
-    minHeight: "100%",
+    height: "100%",
   },
 
   // INPUT
@@ -97,6 +97,7 @@ export const GLOBAL_STYLES = StyleSheet.create({
     textShadowRadius: 10,
     fontSize: 20,
     textAlign: "center",
+    marginBottom: 16,
   },
 
   bodyText: {

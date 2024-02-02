@@ -1,37 +1,32 @@
 import React from "react";
-import { TouchableOpacity, Text, View } from "react-native";
+import { View, Text } from "react-native";
 import { GLOBAL_STYLES, COLORS } from "../../constants";
-import Layout from "../../components/Layout";
+import { Layout, PrimaryButton, Input } from "../../components";
 
-// CONTENU DU RETURN A FINIR
+// TODO : CSS A FINIR
 
 export function Login({ navigation }) {
   return (
-    <View style={GLOBAL_STYLES.screenContainer}>
-      <Layout />
-      <View style={GLOBAL_STYLES.introContainer}>
-        <Text style={GLOBAL_STYLES.intro}>
+    <Layout>
+      <View style={GLOBAL_STYLES.body}>
+        <Text style={GLOBAL_STYLES.title}>
           Désormais tu es le game master, vos choix vont influer sur les rôles
           de chacun ainsi que la suite de votre histoire.
         </Text>
+
+        <Text style={GLOBAL_STYLES.appTitle}>Entrez dans l'histoire</Text>
+
+        <View style={GLOBAL_STYLES.buttonContainer}>
+          <PrimaryButton
+            text="Connexion"
+            onPress={() => navigation.navigate("SignIn")}
+          />
+          <PrimaryButton
+            text="Créer un compte"
+            onPress={() => navigation.navigate("SignUp")}
+          />
+        </View>
       </View>
-      <View style={GLOBAL_STYLES.titreContainer}>
-        <Text style={GLOBAL_STYLES.titre}>Entrez dans l'histoire</Text>
-      </View>
-      {/* <View style={GLOBAL_STYLES.buttonContainer}>
-        <TouchableOpacity
-          style={GLOBAL_STYLES.button}
-          onPress={() => navigation.navigate("SignIn")}
-        >
-          <Text style={GLOBAL_STYLES.buttonText}>Connexion</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={GLOBAL_STYLES.button}
-          onPress={() => navigation.navigate("SignUp")}
-        >
-          <Text style={GLOBAL_STYLES.buttonText}>Créer un compte</Text>
-        </TouchableOpacity>
-      </View> */}
-    </View>
+    </Layout>
   );
 }

@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { COLORS } from "./COLORS";
 
 export const GLOBAL_STYLES = StyleSheet.create({
+  //LAYOUT
   screenContainer: {
     flex: 1,
     alignItems: "center",
@@ -26,6 +27,7 @@ export const GLOBAL_STYLES = StyleSheet.create({
     padding: 10,
   },
 
+  // CHILDRENS
   body: {
     backgroundColor: COLORS.primary,
     width: "100%",
@@ -55,24 +57,31 @@ export const GLOBAL_STYLES = StyleSheet.create({
     minHeight: "100%",
   },
 
+  // INPUT
   inputContainer: {
     width: "80%",
+    height: 50,
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    borderRadius: 10,
-    backgroundColor: COLORS.transpWhite70,
-    padding: 16,
-    gap: 16,
-  },
-  input: {
-    width: "100%",
+    justifyContent: "center",
     borderRadius: 8,
-    padding: 16,
-    fontSize: 16,
-    color: COLORS.black,
     backgroundColor: COLORS.secondary,
   },
+  input: {
+    width: "90%",
+    fontFamily: "LeagueSpartan_500Medium",
+    paddingHorizontal: 16,
+    fontSize: 18,
+    color: COLORS.black,
+  },
+  inputClearIcon: {
+    width: "10%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
+  // TEXTS
   appTitle: {
     color: COLORS.white,
     fontSize: 32,
@@ -97,6 +106,7 @@ export const GLOBAL_STYLES = StyleSheet.create({
     fontWeight: "normal",
   },
 
+  // BUTTONS
   primaryButton: {
     width: "70%",
     alignItems: "center",
@@ -107,6 +117,7 @@ export const GLOBAL_STYLES = StyleSheet.create({
     color: COLORS.black,
     elevation: 10,
   },
+
   primaryButtonText: {
     fontFamily: "LeagueSpartan_700Bold",
     color: COLORS.black,
@@ -131,6 +142,13 @@ export const GLOBAL_STYLES = StyleSheet.create({
     fontWeight: "normal",
     textTransform: "uppercase",
     textAlign: "center",
+  },
+
+  buttonContainer: {
+    // flexDirection: "column",
+    alignItems: "center",
+    // justifyContent: "center",
+    gap: 16,
   },
 });
 

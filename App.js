@@ -1,14 +1,13 @@
-import React from "react";
-import { StatusBar } from "expo-status-bar";
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-
+import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   useFonts,
   LeagueSpartan_900Black,
   LeagueSpartan_500Medium,
   LeagueSpartan_700Bold,
+<<<<<<< HEAD
 } from "@expo-google-fonts/league-spartan";
 
 // TODO : AJOUTER LES IMPORTS DES AUTRES SCREENS
@@ -19,9 +18,20 @@ import { GLOBAL_STYLES, COLORS } from "./constants";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { user } from "./reducers/user";
+=======
+} from '@expo-google-fonts/league-spartan';
+// AJOUTER LES IMPORTS DES AUTRES SCREENS
+import { Login, SignIn, SignUp } from './screens/login';
+import { GLOBAL_STYLES, COLORS } from './constants';
+
+// AJOUTER LES IMPORTS DES REDUCEURS
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { user, currentGame } from './reducers';
+>>>>>>> 9adb1a5fef61dd8dbe7c6f5d77b1d11af2b9f362
 
 const store = configureStore({
-  reducer: { user },
+  reducer: { user, currentGame },
 });
 
 const Stack = createNativeStackNavigator();
@@ -32,7 +42,6 @@ export default function App() {
     LeagueSpartan_500Medium,
     LeagueSpartan_700Bold,
   });
-
   if (!fontsLoaded && !fontError) {
     return null;
   }

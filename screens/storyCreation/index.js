@@ -1,1 +1,1 @@
-export { CharactersCreation } from './CharactersCreation';
+export { Players } from './Players';

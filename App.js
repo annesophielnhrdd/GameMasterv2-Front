@@ -7,9 +7,17 @@ import {
   LeagueSpartan_700Bold,
 } from '@expo-google-fonts/league-spartan';
 
-import { CharactersCreation } from './screens/storyCreation';
+import { Players } from './screens/storyCreation';
 import Header from './components/Header';
 import { COLORS, GLOBAL_STYLES } from './constants';
+
+import { Provider } from 'react-redux';
+import { configureStore } from '@reduxjs/toolkit';
+import { user, currentGame } from './reducers';
+
+const store = configureStore({
+  reducer: { user, currentGame },
+});
 
 export default function App() {
   const [fontsLoaded, fontError] = useFonts({
@@ -23,14 +31,16 @@ export default function App() {
   }
 
   return (
-    <View style={GLOBAL_STYLES.container}>
-      <View style={GLOBAL_STYLES.header}>
-        <Header />
+    <Provider store={store}>
+      <View style={GLOBAL_STYLES.container}>
+        <View style={GLOBAL_STYLES.header}>
+          <Header />
+        </View>
+        <View style={GLOBAL_STYLES.body}>
+          <Players />
+        </View>
+        <StatusBar style="auto" />
       </View>
-      <View style={GLOBAL_STYLES.body}>
-        <CharactersCreation />
-      </View>
-      <StatusBar style="auto" />
-    </View>
+    </Provider>
   );
 }

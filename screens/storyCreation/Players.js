@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { COLORS, GLOBAL_STYLES } from '../../constants';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   StyleSheet,
   ScrollView,
@@ -10,13 +11,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { useFetch, useForm } from '../../hooks';
+import { addCharacters } from '../../reducers';
 
 const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
-export function CharactersCreation() {
+export function Players({ navigation }) {
+  const dispatch = useDispatch();
   // const user = useSelector(state => state.user);
+  const currentGame = useSelector(state => state.currentGame);
+  console.log('[FRONTEND][CHARACTERS CREATION] Current game:', currentGame);
 
   const user = {
     _id: '65b368bd9d8ddfdd0160810f',
@@ -27,7 +30,13 @@ export function CharactersCreation() {
   };
 
   const [players, setPlayers] = useState([
-    { name: user.username, character: '', description: '' },
+    {
+      name: `${user.username.slice(0, 1).toUpperCase()}${user.username
+        .slice(1)
+        .toLowerCase()}`,
+      character: '',
+      description: '',
+    },
     { name: '', character: '', description: '' },
   ]);
 
@@ -56,7 +65,9 @@ export function CharactersCreation() {
 
   const handleChange = (text, i) => {
     const updatedPlayers = [...players];
-    updatedPlayers[i].name = text;
+    updatedPlayers[i].name = `${text.slice(0, 1).toUpperCase()}${text
+      .slice(1)
+      .toLowerCase()}`;
     setPlayers(updatedPlayers);
   };
 
@@ -78,13 +89,15 @@ export function CharactersCreation() {
     );
     fetch(`${BACKEND_URL}/story/characters?players=${playersNames.join(',')}`)
       .then(resp => resp.json())
-      .then(data => console.log('data', data))
+      .then(data => dispatch(addCharacters(data)))
       .catch(error => console.error(error))
       .finally(() =>
         console.log(
           '[FRONTEND][CHARACTERS CREATION] Finished fetching story/characters'
         )
       );
+
+    // navigation.navigate('Style');
   };
 
   const inputWidth = i => (i < 2 ? '100%' : '85%');
@@ -129,6 +142,7 @@ export function CharactersCreation() {
           ) : null}
         </View>
       ))}
+      <View style={{ height: '0px' }}></View>
       <TouchableOpacity
         onPress={addNewPlayer}
         style={GLOBAL_STYLES.primaryButton}

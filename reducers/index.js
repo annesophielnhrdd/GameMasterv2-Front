@@ -5,4 +5,11 @@ export {
   addFriend,
   removeFriend,
 } from './user';
-export { default as currentGame, addCharacters } from './currentGame';
+export {
+  default as currentGame,
+  addPlayers,
+  setStoryLength,
+  setStyle,
+  setUniverse,
+  clearCurrentGame,
+} from './currentGame';

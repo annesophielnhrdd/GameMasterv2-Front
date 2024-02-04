@@ -10,6 +10,13 @@ import {
 } from '@expo-google-fonts/league-spartan';
 // AJOUTER LES IMPORTS DES AUTRES SCREENS
 import { Login, SignIn, SignUp } from './screens/login';
+import {
+  Characters,
+  Players,
+  StoryLength,
+  Style,
+  Universe,
+} from './screens/storyCreation';
 import { GLOBAL_STYLES, COLORS } from './constants';
 
 // AJOUTER LES IMPORTS DES REDUCEURS
@@ -39,9 +46,14 @@ export default function App() {
       <NavigationContainer>
         <StatusBar hidden={false} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Players" component={Players} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="SignIn" component={SignIn} />
           <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="StoryLength" component={StoryLength} />
+          <Stack.Screen name="Style" component={Style} />
+          <Stack.Screen name="Universe" component={Universe} />
+          <Stack.Screen name="Characters" component={Characters} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

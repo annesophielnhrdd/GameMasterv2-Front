@@ -22,7 +22,7 @@ export const GLOBAL_STYLES = StyleSheet.create({
 
   centerContainer: {
     width: '100%',
-    height: '80%',
+    height: '100%',
     backgroundColor: COLORS.primary,
     alignItems: 'center',
     justifyContent: 'center',
@@ -33,7 +33,6 @@ export const GLOBAL_STYLES = StyleSheet.create({
   scrollViewContainer: {
     alignItems: 'center',
     justifyContent: 'center',
-    // marginTop: '20%',
     gap: 32,
     paddingVertical: 32,
     minHeight: '100%',

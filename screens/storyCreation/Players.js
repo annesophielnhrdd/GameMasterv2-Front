@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { addPlayers } from '../../reducers';
 
 import { COLORS, GLOBAL_STYLES } from '../../constants';
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -11,7 +12,6 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { addCharacters } from '../../reducers';
 
 const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
@@ -74,8 +74,8 @@ export function Players({ navigation }) {
   const handleSubmit = () => {
     const playersNames = [];
 
+    // Check if all fields are completed.
     for (const player of players) {
-      // Check if all fields are completed
       if (player.name.trim() === '') {
         return alert('Tu dois fournir un nom pour chaque joueur.');
       }
@@ -83,13 +83,20 @@ export function Players({ navigation }) {
       playersNames.push(player.name);
     }
 
-    // TODO: Add the spinner
+    // Add players names to user's friends in DB.
+    fetch(`${BACKEND_URL}/user/addFriends`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: user.token, newFriends: playersNames }),
+    }).catch(error => console.error(error));
+
+    // Create player's characters with openAI API.
     console.log(
       '[FRONTEND][CHARACTERS CREATION] Start fetching story/characters'
     );
     fetch(`${BACKEND_URL}/story/characters?players=${playersNames.join(',')}`)
       .then(resp => resp.json())
-      .then(data => dispatch(addCharacters(data)))
+      .then(data => dispatch(addPlayers(data)))
       .catch(error => console.error(error))
       .finally(() =>
         console.log(
@@ -97,7 +104,7 @@ export function Players({ navigation }) {
         )
       );
 
-    // navigation.navigate('Style');
+    navigation.navigate('StoryLength');
   };
 
   const inputWidth = i => (i < 2 ? '100%' : '85%');
@@ -108,7 +115,7 @@ export function Players({ navigation }) {
       contentContainerStyle={GLOBAL_STYLES.scrollViewContainer}
     >
       <Text style={GLOBAL_STYLES.title}>
-        Quels sont les prénoms de vos joueurs?
+        Quels sont les prénoms de vos joueurs ?
       </Text>
 
       {players.map((player, i) => (
@@ -142,6 +149,7 @@ export function Players({ navigation }) {
           ) : null}
         </View>
       ))}
+
       <View style={{ height: '0px' }}></View>
       <TouchableOpacity
         onPress={addNewPlayer}
@@ -149,6 +157,7 @@ export function Players({ navigation }) {
       >
         <Text style={GLOBAL_STYLES.primaryButtonText}>Ajouter un joueur</Text>
       </TouchableOpacity>
+
       <TouchableOpacity
         style={GLOBAL_STYLES.primaryButton}
         onPress={handleSubmit}
@@ -170,16 +179,5 @@ const styles = StyleSheet.create({
     width: '15%',
     justifyContent: 'center',
     alignItems: 'flex-end',
-  },
-  addButton: {
-    backgroundColor: '#efefef',
-    paddingVertical: '5%',
-    paddingHorizontal: '15%',
-    borderRadius: 8,
-    marginTop: '7%',
-    //elevation: "5%",
-    shadowColor: '#000',
-    shadowOpacity: '3%',
-    shadowOffset: { width: 0, height: 2 },
   },
 });

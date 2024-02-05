@@ -7,6 +7,18 @@ import {
   LeagueSpartan_900Black,
   LeagueSpartan_500Medium,
   LeagueSpartan_700Bold,
+<<<<<<< HEAD
+} from "@expo-google-fonts/league-spartan";
+
+// TODO : AJOUTER LES IMPORTS DES AUTRES SCREENS
+import { Login, SignIn, SignUp } from "./screens/login";
+import { GLOBAL_STYLES, COLORS } from "./constants";
+
+// TODO : AJOUTER LES IMPORTS DES REDUCEURS
+import { Provider } from "react-redux";
+import { configureStore } from "@reduxjs/toolkit";
+import { user } from "./reducers/user";
+=======
 } from '@expo-google-fonts/league-spartan';
 // AJOUTER LES IMPORTS DES AUTRES SCREENS
 import { Login, SignIn, SignUp } from './screens/login';
@@ -23,6 +35,7 @@ import { GLOBAL_STYLES, COLORS } from './constants';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { user, currentGame } from './reducers';
+>>>>>>> 9adb1a5fef61dd8dbe7c6f5d77b1d11af2b9f362
 
 const store = configureStore({
   reducer: { user, currentGame },
@@ -40,7 +53,7 @@ export default function App() {
     return null;
   }
 
-  // AJOUTER LES AUTRES STACK.SCREENS DANS LE RETURN
+  // TODO : AJOUTER LES AUTRES STACK.SCREENS DANS LE RETURN
   return (
     <Provider store={store}>
       <NavigationContainer>

@@ -92,9 +92,9 @@
     semver "^6.3.1"
 
 "@babel/helper-create-class-features-plugin@^7.18.6", "@babel/helper-create-class-features-plugin@^7.22.15", "@babel/helper-create-class-features-plugin@^7.23.6", "@babel/helper-create-class-features-plugin@^7.23.9":
-  version "7.23.9"
-  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.23.9.tgz#fddfdf51fca28f23d16b9e3935a4732690acfad6"
-  integrity sha512-B2L9neXTIyPQoXDm+NtovPvG6VOLWnaXu3BIeVDWwdKFgG30oNa6CqVGiJPDWQwIAK49t9gnQI9c6K6RzabiKw==
+  version "7.23.10"
+  resolved "https://registry.yarnpkg.com/@babel/helper-create-class-features-plugin/-/helper-create-class-features-plugin-7.23.10.tgz#25d55fafbaea31fd0e723820bb6cc3df72edf7ea"
+  integrity sha512-2XpP2XhkXzgxecPNEEK8Vz8Asj9aRxt08oKOqtiZoqV2UGZ5T+EkyP9sXQ9nwMxBIG34a7jmasVqoMop7VdPUw==
   dependencies:
     "@babel/helper-annotate-as-pure" "^7.22.5"
     "@babel/helper-environment-visitor" "^7.22.20"
@@ -2049,13 +2049,14 @@
     invariant "^2.2.4"
     nullthrows "^1.1.1"
 
-"@react-navigation/bottom-tabs@^7.0.0-alpha.7":
-  version "7.0.0-alpha.8"
-  resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-7.0.0-alpha.8.tgz#a728ec963f6f65ab777a74e230fba70200bfcb36"
-  integrity sha512-bZu4bwea1tQwz1M3DTAorUf9ql75M8SjWTbvN0wzRFvZ19mpfQMhrQWnmOGyepBC8pDRcGB7aX3IHzmQ/nTu3w==
+"@react-navigation/bottom-tabs@6":
+  version "6.5.11"
+  resolved "https://registry.yarnpkg.com/@react-navigation/bottom-tabs/-/bottom-tabs-6.5.11.tgz#b6e67a3aa19e60ed9c1139fa0253586c479832d5"
+  integrity sha512-CBN/NOdxnMvmjw+AJQI1kltOYaClTZmGec5pQ3ZNTPX86ytbIOylDIITKMfTgHZcIEFQDymx1SHeS++PIL3Szw==
   dependencies:
-    "@react-navigation/elements" "^2.0.0-alpha.5"
+    "@react-navigation/elements" "^1.3.21"
     color "^4.2.3"
+    warn-once "^0.1.0"
 
 "@react-navigation/core@^7.0.0-alpha.7":
   version "7.0.0-alpha.7"
@@ -2073,13 +2074,6 @@
   version "1.3.21"
   resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-1.3.21.tgz#debac6becc6b6692da09ec30e705e476a780dfe1"
   integrity sha512-eyS2C6McNR8ihUoYfc166O1D8VYVh9KIl0UQPI8/ZJVsStlfSTgeEEh+WXge6+7SFPnZ4ewzEJdSAHH+jzcEfg==
-
-"@react-navigation/elements@^2.0.0-alpha.5":
-  version "2.0.0-alpha.5"
-  resolved "https://registry.yarnpkg.com/@react-navigation/elements/-/elements-2.0.0-alpha.5.tgz#819a69431c04a9c6c4acaff4edddddb731440fa9"
-  integrity sha512-LfIzefiwTCmUNYjMTs/2G7bUHPc/VrQ9OfkvMSk/cyqgjjDdJoRq9g6aLP1FsF1tlFKoUpTnWaTsFP6l4DJb8Q==
-  dependencies:
-    color "^4.2.3"
 
 "@react-navigation/native-stack@6":
   version "6.9.17"

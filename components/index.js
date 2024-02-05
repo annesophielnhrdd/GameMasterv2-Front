@@ -1,3 +1,3 @@
 export { PrimaryButton } from "./Button";
-export { Layout } from "./Input";
+export { Layout } from "./Layout";
 export { Input } from "./Input";

@@ -13,26 +13,31 @@ export function SignIn({ navigation }) {
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleLogin = () => {
+    setIsLoading(true);
+
     fetch("http://192.168.1.10:3000/users/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),
     })
-      .then((response) => {
+      .then(response => {
         return response.json();
       })
-      .then((data) => {
+      .then(data => {
         if (data.result) {
           dispatch(signin({ username: username, token: data.token }));
           setUsername("");
           setPassword("");
           navigation.navigate("MesParties");
         }
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
   return (
-    <Layout>
+    <Layout isLoading={isLoading}>
       <View style={styles.centerContainer}>
         <Text style={styles.label}>Nom d'utilisateur</Text>
         <TextInput
@@ -42,7 +47,7 @@ export function SignIn({ navigation }) {
           keyboardType="default"
           textContentType="username"
           autoComplete="username"
-          onChangeText={(value) => setUsername(value)}
+          onChangeText={value => setUsername(value)}
           value={username}
         />
 
@@ -55,7 +60,7 @@ export function SignIn({ navigation }) {
           keyboardType="default"
           textContentType="password"
           autoComplete="current-password"
-          onChangeText={(value) => setPassword(value)}
+          onChangeText={value => setPassword(value)}
           value={password}
         />
 

@@ -46,10 +46,10 @@ export default function App() {
       <NavigationContainer>
         <StatusBar hidden={false} />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Players" component={Players} />
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="SignIn" component={SignIn} />
           <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="Players" component={Players} />
           <Stack.Screen name="StoryLength" component={StoryLength} />
           <Stack.Screen name="Style" component={Style} />
           <Stack.Screen name="Universe" component={Universe} />

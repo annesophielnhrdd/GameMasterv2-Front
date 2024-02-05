@@ -3,14 +3,14 @@ import { View, TextInput, TouchableOpacity, Text } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { GLOBAL_STYLES, COLORS } from "../constants";
 
-const Input = ({ placeholder, value, handleChange, clearIcon }) => {
+export const Input = ({ placeholder, value, handleChange, clearIcon }) => {
   return (
     <View style={GLOBAL_STYLES.inputContainer}>
       <TextInput
         style={GLOBAL_STYLES.input}
         placeholder={placeholder}
         value={value}
-        onChangeText={(text) => handleChange(text)}
+        onChangeText={text => handleChange(text)}
       />
       {clearIcon && (
         <TouchableOpacity
@@ -23,5 +23,3 @@ const Input = ({ placeholder, value, handleChange, clearIcon }) => {
     </View>
   );
 };
-
-export default Input;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, Image, ActivityIndicator } from "react-native";
 import { GLOBAL_STYLES, COLORS } from "../constants";
 
-const Layout = ({ children, isLoading = false }) => {
+export const Layout = ({ children, isLoading }) => {
   return (
     <View style={GLOBAL_STYLES.screenContainer}>
       <View style={GLOBAL_STYLES.header}>
@@ -22,5 +22,3 @@ const Layout = ({ children, isLoading = false }) => {
     </View>
   );
 };
-
-export default Layout;

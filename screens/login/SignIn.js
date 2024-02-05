@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+} from "react-native";
 import { Layout, PrimaryButton, Input } from "../../components";
 import { GLOBAL_STYLES, COLORS } from "../../constants";
 
@@ -75,3 +81,5 @@ export function SignIn({ navigation }) {
     </Layout>
   );
 }
+
+const styles = StyleSheet.create({});

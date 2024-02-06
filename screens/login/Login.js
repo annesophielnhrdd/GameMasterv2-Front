@@ -8,8 +8,8 @@ import { Layout, PrimaryButton, Input } from "../../components";
 export function Login({ navigation }) {
   return (
     <Layout>
-      <View style={GLOBAL_STYLES.body}>
-        <Text style={GLOBAL_STYLES.title}>
+      <View>
+        <Text style={GLOBAL_STYLES.intro}>
           Désormais tu es le game master, vos choix vont influer sur les rôles
           de chacun ainsi que la suite de votre histoire.
         </Text>

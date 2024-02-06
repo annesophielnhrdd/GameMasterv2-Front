@@ -10,9 +10,12 @@ export const GLOBAL_STYLES = StyleSheet.create({
   },
 
   header: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: COLORS.secondary,
     width: "100%",
-    height: "15%",
+    height: "18%",
   },
 
   logo: {
@@ -83,10 +86,29 @@ export const GLOBAL_STYLES = StyleSheet.create({
 
   // TEXTS
   appTitle: {
-    color: COLORS.white,
-    fontSize: 32,
-    fontWeight: "bold",
+    fontFamily: "LeagueSpartan_900Black",
+    fontSize: 35,
+    color: COLORS.secondary,
     textAlign: "center",
+    paddingVertical: "15%",
+    marginBottom: "10%",
+    textShadowColor: COLORS.black,
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 10,
+  },
+
+  intro: {
+    fontFamily: "LeagueSpartan_700Bold",
+    fontSize: 25,
+    textAlign: "center",
+    lineHeight: 33,
+    justifyContent: "center",
+    paddingHorizontal: "10%",
+    paddingVertical: "15%",
+    marginTop: "10%",
+    textShadowColor: COLORS.white,
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 10,
   },
 
   title: {
@@ -146,10 +168,8 @@ export const GLOBAL_STYLES = StyleSheet.create({
   },
 
   buttonContainer: {
-    // flexDirection: "column",
     alignItems: "center",
-    // justifyContent: "center",
-    gap: 16,
+    gap: 25,
   },
 });
 

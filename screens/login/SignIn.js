@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-
+import { user } from "../../reducers";
 import {
   TouchableOpacity,
   StyleSheet,
@@ -18,68 +18,74 @@ export function SignIn({ navigation }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-
   const [isLoading, setIsLoading] = useState(false);
+
+  const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
   const handleLogin = () => {
     setIsLoading(true);
+    setError(false);
 
-    fetch("http://192.168.1.10:3000/users/signin", {
+    fetch(`${BACKEND_URL}/users/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username: username, password: password }),
     })
-      .then(response => {
-        return response.json();
-      })
-      .then(data => {
-        if (data.result) {
-          dispatch(signin({ username: username, token: data.token }));
+      .then((response) => response.json())
+      .then((user) => {
+        if (user) {
+          dispatch(login(user));
           setUsername("");
           setPassword("");
           navigation.navigate("MesParties");
+        } else {
+          setError(true);
         }
       })
       .finally(() => setIsLoading(false));
   };
+
   return (
     <Layout isLoading={isLoading}>
-      <View style={styles.centerContainer}>
-        <Text style={styles.label}>Nom d'utilisateur</Text>
+      <View>
+        <Text style={GLOBAL_STYLES.title}>Nom d'utilisateur</Text>
         <TextInput
-          style={styles.input}
+          style={GLOBAL_STYLES.input}
           placeholder="Nom d'utilisateur"
           autoCapitalize="none"
           keyboardType="default"
           textContentType="username"
           autoComplete="username"
-          onChangeText={value => setUsername(value)}
+          onChangeText={(value) => setUsername(value)}
           value={username}
         />
 
-        <Text style={styles.label}>Mot de passe</Text>
+        <Text style={GLOBAL_STYLES.title}>Mot de passe</Text>
         <TextInput
-          style={styles.input}
+          style={GLOBAL_STYLES.input}
           placeholder="Mot de passe"
           secureTextEntry={true}
           autoCapitalize="none"
           keyboardType="default"
           textContentType="password"
           autoComplete="current-password"
-          onChangeText={value => setPassword(value)}
+          onChangeText={(value) => setPassword(value)}
           value={password}
         />
 
         {error && (
-          <Text style={styles.error}>Merci de renseigner tous les champs</Text>
+          <Text style={GLOBAL_STYLES.errorText}>
+            Merci de renseigner tous les champs correctement
+          </Text>
         )}
 
-        <TouchableOpacity style={styles.button} onPress={() => handleLogin()}>
-          <Text style={styles.buttonText}>Se connecter</Text>
+        <TouchableOpacity
+          style={GLOBAL_STYLES.primaryButton}
+          onPress={() => handleLogin()}
+        >
+          <Text style={GLOBAL_STYLES.primaryButtonText}>Se connecter</Text>
         </TouchableOpacity>
       </View>
     </Layout>
   );
 }
-
-const styles = StyleSheet.create({});

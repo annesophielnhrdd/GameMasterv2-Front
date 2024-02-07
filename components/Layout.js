@@ -12,13 +12,16 @@ export const Layout = ({ children, isLoading }) => {
           resizeMode="contain"
         />
       </View>
-      {isLoading ? (
-        <View style={GLOBAL_STYLES.spinner}>
-          <ActivityIndicator size="large" color={COLORS.secondary} />
-        </View>
-      ) : (
-        <View style={GLOBAL_STYLES.body}>{children}</View>
-      )}
+
+      <View style={GLOBAL_STYLES.body}>
+        {children}
+
+        {isLoading ? (
+          <View style={GLOBAL_STYLES.spinner}>
+            <ActivityIndicator size="large" color={COLORS.secondary} />
+          </View>
+        ) : null}
+      </View>
     </View>
   );
 };

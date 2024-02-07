@@ -23,6 +23,7 @@ import { GLOBAL_STYLES, COLORS } from "./constants";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import { user, currentGame } from "./reducers";
+import { ChoicesPhase } from "./screens/game";
 
 const store = configureStore({
   reducer: { user, currentGame },
@@ -44,7 +45,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        <StatusBar hidden={false} />
+        <StatusBar hidden={false} style="dark" backgroundColor="transparent" />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="SignIn" component={SignIn} />
@@ -54,6 +55,7 @@ export default function App() {
           <Stack.Screen name="Style" component={Style} />
           <Stack.Screen name="Universe" component={Universe} />
           <Stack.Screen name="Characters" component={Characters} />
+          <Stack.Screen name="ChoicesPhase" component={ChoicesPhase} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

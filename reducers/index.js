@@ -4,12 +4,15 @@ export {
   logout,
   addFriend,
   removeFriend,
-} from './user';
+} from "./user";
 export {
   default as currentGame,
   addPlayers,
   setStoryLength,
   setStyle,
   setUniverse,
+  setStory,
+  setSelectedChoices,
+  setCurrentGame,
   clearCurrentGame,
-} from './currentGame';
+} from "./currentGame";

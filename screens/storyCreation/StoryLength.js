@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setStoryLength } from '../../reducers';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setStoryLength } from "../../reducers";
 
-import { COLORS, GLOBAL_STYLES } from '../../constants';
-import WheelPickerExpo from 'react-native-wheel-picker-expo';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { COLORS, GLOBAL_STYLES } from "../../constants";
+import WheelPickerExpo from "react-native-wheel-picker-expo";
+import { Text, TouchableOpacity, View } from "react-native";
+import { Layout } from "../../components";
 
 export function StoryLength({ navigation }) {
   const dispatch = useDispatch();
@@ -14,11 +15,11 @@ export function StoryLength({ navigation }) {
 
   const handleNext = () => {
     dispatch(setStoryLength(selectedStoryLength));
-    navigation.navigate('Style');
+    navigation.navigate("Style");
   };
 
   return (
-    <View style={GLOBAL_STYLES.centerContainer}>
+    <Layout>
       <Text style={GLOBAL_STYLES.title}>
         Combien d'actions dans la partie ?
       </Text>
@@ -31,18 +32,18 @@ export function StoryLength({ navigation }) {
         backgroundColor={COLORS.primary}
         items={storyLengthChoices.map(storyLengthChoice => ({
           label: storyLengthChoice,
-          value: '',
+          value: "",
         }))}
         onChange={({ item }) => setSelectedStoryLength(item.label)}
       />
 
-      <View style={{ height: '0px' }}></View>
+      <View style={{ height: "0px" }}></View>
       <TouchableOpacity
         style={GLOBAL_STYLES.primaryButton}
         onPress={handleNext}
       >
         <Text style={GLOBAL_STYLES.primaryButtonText}>Suivant</Text>
       </TouchableOpacity>
-    </View>
+    </Layout>
   );
 }

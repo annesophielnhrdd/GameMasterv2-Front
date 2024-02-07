@@ -13,6 +13,8 @@ export const GLOBAL_STYLES = StyleSheet.create({
     backgroundColor: COLORS.secondary,
     width: "100%",
     height: "15%",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   logo: {
@@ -32,6 +34,10 @@ export const GLOBAL_STYLES = StyleSheet.create({
     backgroundColor: COLORS.primary,
     width: "100%",
     height: "85%",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 32,
+    paddingHorizontal: 16,
   },
 
   centerContainer: {
@@ -81,6 +87,13 @@ export const GLOBAL_STYLES = StyleSheet.create({
     justifyContent: "center",
   },
 
+  card: {
+    width: "100%",
+    padding: 16,
+    backgroundColor: COLORS.secondary,
+    borderRadius: 10,
+  },
+
   // TEXTS
   appTitle: {
     color: COLORS.white,
@@ -101,9 +114,10 @@ export const GLOBAL_STYLES = StyleSheet.create({
   },
 
   bodyText: {
-    color: COLORS.white,
+    color: COLORS.black,
+    textAlign: "justify",
     width: "100%",
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: "normal",
   },
 

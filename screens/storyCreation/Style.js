@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { setStyle } from '../../reducers';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setStyle } from "../../reducers";
 
-import { COLORS, GLOBAL_STYLES } from '../../constants';
-import WheelPickerExpo from 'react-native-wheel-picker-expo';
-import { Text, TouchableOpacity, View } from 'react-native';
+import { COLORS, GLOBAL_STYLES } from "../../constants";
+import WheelPickerExpo from "react-native-wheel-picker-expo";
+import { Text, TouchableOpacity, View } from "react-native";
+import { Layout } from "../../components";
 
 export function Style({ navigation }) {
   const dispatch = useDispatch();
-  const [selectedStyle, setSelectedStyle] = useState('intrigue');
+  const [selectedStyle, setSelectedStyle] = useState("intrigue");
 
-  const styleChoices = ['combat', 'intrigue', 'exploration'];
+  const styleChoices = ["combat", "intrigue", "exploration"];
 
   const handleNext = () => {
     dispatch(setStyle(selectedStyle));
-    navigation.navigate('Universe');
+    navigation.navigate("Universe");
   };
 
   return (
-    <View style={GLOBAL_STYLES.centerContainer}>
+    <Layout>
       <Text style={GLOBAL_STYLES.title}>Quel style de jeu préférez-vous ?</Text>
 
       <WheelPickerExpo
@@ -34,13 +35,13 @@ export function Style({ navigation }) {
         onChange={({ item }) => setSelectedStyle(item.value)}
       />
 
-      <View style={{ height: '0px' }}></View>
+      <View style={{ height: "0px" }}></View>
       <TouchableOpacity
         style={GLOBAL_STYLES.primaryButton}
         onPress={handleNext}
       >
         <Text style={GLOBAL_STYLES.primaryButtonText}>Suivant</Text>
       </TouchableOpacity>
-    </View>
+    </Layout>
   );
 }

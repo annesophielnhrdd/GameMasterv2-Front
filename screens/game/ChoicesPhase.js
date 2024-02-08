@@ -5,24 +5,20 @@ import { COLORS, GLOBAL_STYLES } from "../../constants";
 import WheelPickerExpo from "react-native-wheel-picker-expo";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Layout } from "../../components";
-import { setCurrentGame, setSelectedChoices } from "../../reducers";
+import {
+  setContinuation,
+  setCurrentGame,
+  setSelectedChoices,
+} from "../../reducers";
 
 const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
 export function ChoicesPhase({ navigation, storyId }) {
   const dispatch = useDispatch();
-  // const user = useSelector(state => state.user);
+  const user = useSelector(state => state.user);
   const currentGame = useSelector(state => state.currentGame);
   const [isLoading, setIsLoading] = useState(true);
   const [currentSelectedChoices, setcurrentSelectedChoices] = useState([]);
-
-  const user = {
-    _id: "65b368bd9d8ddfdd0160810f",
-    username: "testeur",
-    password: "testeurPassword",
-    token: "testeurToken",
-    friends: ["Marie", "Jimmy", "Jean"],
-  };
 
   if (!currentGame._id) {
     !isLoading ? setIsLoading(true) : null;
@@ -72,8 +68,52 @@ export function ChoicesPhase({ navigation, storyId }) {
     }
 
     dispatch(setSelectedChoices(currentSelectedChoices));
-    return;
+
+    const lastChoices = currentSelectedChoices
+      .map(selectedChoice => {
+        return `${selectedChoice.character} a choisi : ${selectedChoice.choice}`;
+      })
+      .join(" ");
+
+    console.log("Last choices:", lastChoices);
+
+    setIsLoading(true);
+    console.log(
+      "[FRONTEND][CHOICES PHASE] Start fetching PUT story/continuation"
+    );
+
+    fetch(`${BACKEND_URL}/story/continuation`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        context: currentGame.context,
+        charactersDescription: currentGame.charactersDescription,
+        lastChoices,
+        storyLength: currentGame.storyLength,
+        round: currentGame.round,
+        style: currentGame.style,
+      }),
+    })
+      .then(res => res.json())
+      .then(({ choicesSummary, storyContinuation }) => {
+        dispatch(
+          setContinuation({
+            newChoices,
+            choicesSummary,
+            continuation: storyContinuation,
+          })
+        );
+        setcurrentSelectedChoices(null);
+      })
+      .catch(error => console.error(error))
+      .finally(() => {
+        console.log(
+          "[FRONTEND][CHOICES PHASE] Start fetching PUT story/continuation"
+        );
+        setIsLoading(false);
+      });
   };
+
   return (
     <Layout isLoading={isLoading}>
       {currentGame._id && (

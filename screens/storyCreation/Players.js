@@ -18,17 +18,9 @@ const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
 export function Players({ navigation }) {
   const dispatch = useDispatch();
-  // const user = useSelector(state => state.user);
+  const user = useSelector(state => state.user);
   const currentGame = useSelector(state => state.currentGame);
   console.log("[FRONTEND][PLAYERS] Current game:", currentGame);
-
-  const user = {
-    _id: "65b368bd9d8ddfdd0160810f",
-    username: "testeur",
-    password: "testeurPassword",
-    token: "testeurToken",
-    friends: ["Marie", "Jimmy", "Jean"],
-  };
 
   const [players, setPlayers] = useState([
     {

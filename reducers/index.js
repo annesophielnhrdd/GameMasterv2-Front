@@ -13,6 +13,7 @@ export {
   setUniverse,
   setStory,
   setSelectedChoices,
+  setContinuation,
   setCurrentGame,
   clearCurrentGame,
 } from "./currentGame";

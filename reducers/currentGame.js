@@ -42,12 +42,21 @@ export const currentGameSlice = createSlice({
     },
     setSelectedChoices: (state, action) => {
       state.selectedChoices = action.payload;
+      state.round += 1;
+    },
+    setContinuation: (state, action) => {
+      state.choices = action.payload.newChoices;
+      state.context = [
+        ...state.context,
+        action.payload.choicesSummary,
+        action.payload.continuation,
+      ];
     },
     setCurrentGame: (state, action) => {
       return (state = action.payload);
     },
     clearCurrentGame: state => {
-      state = initialState;
+      return (state = initialState);
     },
   },
 });
@@ -59,6 +68,7 @@ export const {
   setUniverse,
   setStory,
   setSelectedChoices,
+  setContinuation,
   setCurrentGame,
   clearCurrentGame,
 } = currentGameSlice.actions;

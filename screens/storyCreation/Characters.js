@@ -5,24 +5,17 @@ import { COLORS, GLOBAL_STYLES } from "../../constants";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Layout } from "../../components";
 import { setCurrentGame } from "../../reducers";
+import { setCurrentGame } from "../../reducers";
 
 const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
 export function Characters({ navigation }) {
   const dispatch = useDispatch();
 
-  // const user = useSelector(state => state.user);
+  const user = useSelector((state) => state.user);
   const currentGame = useSelector((state) => state.currentGame);
   const [isLoading, setIsLoading] = useState(false);
   const [startTapped, setStartTapped] = useState(false);
-
-  const user = {
-    _id: "65b368bd9d8ddfdd0160810f",
-    username: "testeur",
-    password: "testeurPassword",
-    token: "testeurToken",
-    friends: ["Marie", "Jimmy", "Jean"],
-  };
 
   useEffect(() => {
     if (currentGame.context && startTapped) {

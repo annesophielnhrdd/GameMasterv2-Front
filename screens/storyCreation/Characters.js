@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { COLORS, GLOBAL_STYLES } from "../../constants";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Layout } from "../../components";
-import { getGame } from "../../reducers";
+import { setCurrentGame } from "../../reducers";
 
 const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
@@ -12,7 +12,7 @@ export function Characters({ navigation }) {
   const dispatch = useDispatch();
 
   // const user = useSelector(state => state.user);
-  const currentGame = useSelector(state => state.currentGame);
+  const currentGame = useSelector((state) => state.currentGame);
   const [isLoading, setIsLoading] = useState(false);
   const [startTapped, setStartTapped] = useState(false);
 
@@ -60,9 +60,9 @@ export function Characters({ navigation }) {
         choices: currentGame.choices,
       }),
     })
-      .then(res => res.json())
-      .then(savedGame => dispatch(getGame(savedGame)))
-      .catch(error => console.error(error))
+      .then((res) => res.json())
+      .then((savedGame) => dispatch(setCurrentGame(savedGame)))
+      .catch((error) => console.error(error))
       .finally(() =>
         console.log("[FRONTEND][CHARACTERS] Finished fetching POST games/")
       );
@@ -79,7 +79,7 @@ export function Characters({ navigation }) {
           Voici vos personnages pour cette aventure :
         </Text>
 
-        {currentGame.players.map(player => {
+        {currentGame.players.map((player) => {
           return (
             <View key={player.character}>
               <Text>{player.name}</Text>

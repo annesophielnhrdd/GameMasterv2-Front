@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { COLORS } from "./COLORS";
+import { findNonSerializableValue } from "@reduxjs/toolkit";
 
 export const GLOBAL_STYLES = StyleSheet.create({
   //LAYOUT
@@ -15,7 +16,7 @@ export const GLOBAL_STYLES = StyleSheet.create({
     alignItems: "center",
     backgroundColor: COLORS.secondary,
     width: "100%",
-    height: "18%",
+    height: "15%",
   },
 
   logo: {
@@ -54,10 +55,10 @@ export const GLOBAL_STYLES = StyleSheet.create({
   scrollViewContainer: {
     alignItems: "center",
     justifyContent: "center",
-    // marginTop: '20%',
+    marginTop: "20%",
     gap: 32,
     paddingVertical: 32,
-    minHeight: "100%",
+    minHeight: "85%",
   },
   scrollView: {
     width: "100%",
@@ -101,8 +102,8 @@ export const GLOBAL_STYLES = StyleSheet.create({
     fontSize: 35,
     color: COLORS.secondary,
     textAlign: "center",
-    paddingVertical: "15%",
-    marginBottom: "10%",
+    // paddingVertical: "15%",
+    // marginBottom: "10%",
     textShadowColor: COLORS.black,
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 10,
@@ -115,8 +116,9 @@ export const GLOBAL_STYLES = StyleSheet.create({
     lineHeight: 33,
     justifyContent: "center",
     paddingHorizontal: "10%",
-    paddingVertical: "15%",
-    marginTop: "10%",
+    // paddingVertical: "15%",
+    marginTop: "8%",
+    marginBottom: "8%",
     textShadowColor: COLORS.white,
     textShadowOffset: { width: 1, height: 1 },
     textShadowRadius: 10,

@@ -9,12 +9,11 @@ export function Login({ navigation }) {
   return (
     <Layout>
       <View>
+        <Text style={GLOBAL_STYLES.appTitle}>Entrez dans l'histoire</Text>
         <Text style={GLOBAL_STYLES.intro}>
           Désormais tu es le game master, vos choix vont influer sur les rôles
           de chacun ainsi que la suite de votre histoire.
         </Text>
-
-        <Text style={GLOBAL_STYLES.appTitle}>Entrez dans l'histoire</Text>
 
         <View style={GLOBAL_STYLES.buttonContainer}>
           <PrimaryButton

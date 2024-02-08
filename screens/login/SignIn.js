@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { user } from "../../reducers";
+import { login, user } from "../../reducers";
 import {
   TouchableOpacity,
   StyleSheet,
@@ -11,7 +11,7 @@ import {
 import { Layout, PrimaryButton, Input } from "../../components";
 import { GLOBAL_STYLES, COLORS } from "../../constants";
 
-// TODO: A FINIR !!!! + IMPORTS?
+// TODO : FIX CSS
 export function SignIn({ navigation }) {
   const dispatch = useDispatch();
 
@@ -24,7 +24,6 @@ export function SignIn({ navigation }) {
 
   const handleLogin = () => {
     setIsLoading(true);
-    setError(false);
 
     fetch(`${BACKEND_URL}/users/signin`, {
       method: "POST",
@@ -37,17 +36,16 @@ export function SignIn({ navigation }) {
           dispatch(login(user));
           setUsername("");
           setPassword("");
-          navigation.navigate("MesParties");
-        } else {
-          setError(true);
+          navigation.navigate("Players");
         }
       })
+      .catch((error) => alert(error.message))
       .finally(() => setIsLoading(false));
   };
 
   return (
     <Layout isLoading={isLoading}>
-      <View>
+      <View style={GLOBAL_STYLES.inputContainer}>
         <Text style={GLOBAL_STYLES.title}>Nom d'utilisateur</Text>
         <TextInput
           style={GLOBAL_STYLES.input}
@@ -59,7 +57,8 @@ export function SignIn({ navigation }) {
           onChangeText={(value) => setUsername(value)}
           value={username}
         />
-
+      </View>
+      <View style={GLOBAL_STYLES.inputContainer}>
         <Text style={GLOBAL_STYLES.title}>Mot de passe</Text>
         <TextInput
           style={GLOBAL_STYLES.input}
@@ -72,20 +71,25 @@ export function SignIn({ navigation }) {
           onChangeText={(value) => setPassword(value)}
           value={password}
         />
-
-        {error && (
-          <Text style={GLOBAL_STYLES.errorText}>
-            Merci de renseigner tous les champs correctement
-          </Text>
-        )}
-
-        <TouchableOpacity
-          style={GLOBAL_STYLES.primaryButton}
-          onPress={() => handleLogin()}
-        >
-          <Text style={GLOBAL_STYLES.primaryButtonText}>Se connecter</Text>
-        </TouchableOpacity>
       </View>
+      {error && (
+        <Text style={GLOBAL_STYLES.errorText}>
+          Merci de renseigner tous les champs correctement
+        </Text>
+      )}
+
+      <TouchableOpacity
+        style={GLOBAL_STYLES.primaryButton}
+        onPress={() => handleLogin()}
+      >
+        <Text style={GLOBAL_STYLES.primaryButtonText}>Se connecter</Text>
+      </TouchableOpacity>
+      <Text
+        style={GLOBAL_STYLES.text}
+        onPress={() => navigation.replace("SignUp")}
+      >
+        M'enregistrer?
+      </Text>
     </Layout>
   );
 }

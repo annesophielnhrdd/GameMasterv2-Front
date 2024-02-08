@@ -19,7 +19,7 @@ const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 export function Players({ navigation }) {
   const dispatch = useDispatch();
   // const user = useSelector(state => state.user);
-  const currentGame = useSelector(state => state.currentGame);
+  const currentGame = useSelector((state) => state.currentGame);
   console.log("[FRONTEND][PLAYERS] Current game:", currentGame);
 
   const user = {
@@ -56,7 +56,7 @@ export function Players({ navigation }) {
     }
   };
 
-  const handleRemovePlayer = i => {
+  const handleRemovePlayer = (i) => {
     if (players.length > 2) {
       const updatedPlayers = [...players];
       updatedPlayers.splice(i, 1);
@@ -89,28 +89,28 @@ export function Players({ navigation }) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ token: user.token, newFriends: playersNames }),
-    }).catch(error => console.error(error));
+    }).catch((error) => console.error(error));
 
     // Create player's characters with openAI API.
     console.log("[FRONTEND][PLAYERS] Start fetching story/characters");
     fetch(`${BACKEND_URL}/story/characters?players=${playersNames.join(",")}`)
-      .then(resp => resp.json())
-      .then(players => {
+      .then((resp) => resp.json())
+      .then((players) => {
         const charactersDescription = players
-          .map(player => player.description)
+          .map((player) => player.description)
           .join(" ");
 
         dispatch(addPlayers({ players, charactersDescription }));
       })
-      .catch(error => console.error(error))
+      .catch((error) => console.error(error))
       .finally(() =>
         console.log("[FRONTEND][PLAYERS] Finished fetching story/characters")
       );
 
-    setTimeout(() => navigation.navigate("StoryLength"), 300);
+    setTimeout(() => navigation.navigate("StoryLength"), 500);
   };
 
-  const inputWidth = i => (i < 2 ? "100%" : "85%");
+  const inputWidth = (i) => (i < 2 ? "100%" : "85%");
 
   return (
     <Layout>
@@ -134,7 +134,7 @@ export function Players({ navigation }) {
                 style={GLOBAL_STYLES.input}
                 placeholder={`Joueur ${i + 1}`}
                 value={player.name}
-                onChangeText={text => handleChange(text, i)}
+                onChangeText={(text) => handleChange(text, i)}
               />
               <TouchableOpacity
                 onPress={() => handleChange("", i)}

@@ -22,7 +22,7 @@ export function ChoicesPhase({ navigation, storyId }) {
 
   if (!currentGame._id) {
     !isLoading ? setIsLoading(true) : null;
-    fetch(`${BACKEND_URL}/games/65c363704462b6f40d00cc53`)
+    fetch(`${BACKEND_URL}/games/${storyId}`)
       .then(res => res.json())
       .then(game => {
         dispatch(setCurrentGame(game));
@@ -35,7 +35,10 @@ export function ChoicesPhase({ navigation, storyId }) {
   }
 
   console.log("[FRONTEND][CHOICES PHASE] currentGame:", currentGame);
-  // console.log("[FRONTEND][CHOICES PHASE] currentGame choices:", currentGame.choices);
+  console.log(
+    "[FRONTEND][CHOICES PHASE] currentGame choices:",
+    currentGame.choices
+  );
   console.log(
     "[FRONTEND][CHOICES PHASE] current selected choices:",
     currentSelectedChoices

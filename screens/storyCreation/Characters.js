@@ -5,7 +5,6 @@ import { COLORS, GLOBAL_STYLES } from "../../constants";
 import { ScrollView, Text, TouchableOpacity, View } from "react-native";
 import { Layout } from "../../components";
 import { setCurrentGame } from "../../reducers";
-import { setCurrentGame } from "../../reducers";
 
 const BACKEND_URL = process.env.EXPO_PUBLIC_BACKEND_URL;
 
